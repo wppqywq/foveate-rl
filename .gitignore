@@ -1,0 +1,74 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# Machine Learning specific
+data/
+datasets/
+logs/
+runs/
+wandb/
+mlruns/
+outputs/
+.hydra/
+
+
+# Model artifacts
+models/
+*.h5
+*.hdf5
+*.onnx
+*.pb
+
+
+.DS_Store
+
+# Project specific
+foveal_sampling_demo.png
+temp_visualization.png
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Experiment results
+results/
+experiments/logs/
+experiments/checkpoints/
+best_model.pth
+ckpt_*.pt
+
+# Temporary files
+tmp/
+temp/
