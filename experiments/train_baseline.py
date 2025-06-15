@@ -27,7 +27,7 @@ try:
     from fovea_lib.metrics import EfficiencyMetrics, ModelComparator, measure_model_efficiency
     from fovea_lib.baseline_model import create_baseline_model, FullResolutionBaseline
 except ImportError as e:
-    print(f"❌ Import error: {e}")
+    print(f"Import error: {e}")
     print("Make sure you're in the foveate directory and all files are in fovea_lib/")
     print("Run 'python experiments/setup_phase1.py' first to verify the setup.")
     exit(1)
@@ -192,7 +192,7 @@ class BaselineTrainer:
         print(f"Model parameters: {sum(p.numel() for p in self.model.parameters()):,}")
         
         if start_epoch > 0:
-            print(f"🔄 Resuming training from epoch {start_epoch}")
+            print(f"Resuming training from epoch {start_epoch}")
         
         for epoch in range(start_epoch, self.config['epochs']):
             # Train
@@ -231,7 +231,7 @@ class BaselineTrainer:
             if epoch > 10 and len(self.test_accuracies) >= 5:
                 recent_accs = self.test_accuracies[-5:]
                 if max(recent_accs) - min(recent_accs) < 0.5:  # Less than 0.5% improvement
-                    print(f"🔄 Early stopping: accuracy plateaued at {test_acc:.2f}%")
+                    print(f"Early stopping: accuracy plateaued at {test_acc:.2f}%")
                     break
         
         # Save final model
@@ -264,12 +264,12 @@ class BaselineTrainer:
         if is_best:
             filepath = os.path.join(self.log_dir, 'best_model.pth')
             torch.save(checkpoint, filepath)
-            print(f"💾 Best model saved with accuracy: {self.best_accuracy:.2f}%")
+            print(f"Best model saved with accuracy: {self.best_accuracy:.2f}%")
         
         if is_periodic:
             filepath = os.path.join(self.log_dir, f'checkpoint_epoch_{epoch}.pth')
             torch.save(checkpoint, filepath)
-            print(f"💾 Checkpoint saved: epoch {epoch}")
+            print(f"Checkpoint saved: epoch {epoch}")
         
         # Always save latest checkpoint
         latest_filepath = os.path.join(self.log_dir, 'latest_checkpoint.pth')
@@ -278,10 +278,10 @@ class BaselineTrainer:
     def load_checkpoint(self, checkpoint_path: str):
         """Load model checkpoint and resume training."""
         if not os.path.exists(checkpoint_path):
-            print(f"❌ Checkpoint not found: {checkpoint_path}")
+            print(f"Checkpoint not found: {checkpoint_path}")
             return False
         
-        print(f"📂 Loading checkpoint: {checkpoint_path}")
+        print(f"Loading checkpoint: {checkpoint_path}")
         checkpoint = torch.load(checkpoint_path, map_location=self.device)
         
         # Load model and optimizer states
@@ -296,8 +296,8 @@ class BaselineTrainer:
         self.test_accuracies = checkpoint.get('test_accuracies', [])
         
         start_epoch = checkpoint['epoch'] + 1
-        print(f"✅ Checkpoint loaded! Resuming from epoch {start_epoch}")
-        print(f"📊 Best accuracy so far: {self.best_accuracy:.2f}%")
+        print(f"Checkpoint loaded! Resuming from epoch {start_epoch}")
+        print(f"Best accuracy so far: {self.best_accuracy:.2f}%")
         
         return start_epoch
 
@@ -409,7 +409,7 @@ def main():
             if os.path.exists(latest_checkpoint):
                 resume_checkpoint = latest_checkpoint
                 log_dir = latest_dir  # Use existing log directory
-                print(f"🔄 Auto-resuming from: {resume_checkpoint}")
+                print(f"Auto-resuming from: {resume_checkpoint}")
     
     # Ensure log directory exists and handle relative paths
     if not os.path.isabs(args.log_dir):
@@ -464,7 +464,7 @@ def main():
     if resume_checkpoint:
         start_epoch = trainer.load_checkpoint(resume_checkpoint)
         if start_epoch is False:
-            print("❌ Failed to load checkpoint, starting from scratch")
+            print("Failed to load checkpoint, starting from scratch")
             start_epoch = 0
     
     # Train the model

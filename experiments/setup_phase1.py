@@ -24,7 +24,7 @@ try:
     from fovea_lib.baseline_model import create_baseline_model
     from fovea_lib.metrics import EfficiencyMetrics
 except ImportError as e:
-    print(f"❌ Import error: {e}")
+    print(f"Import error: {e}")
     print("Make sure you're running from the foveate directory and all files are in fovea_lib/")
     sys.exit(1)
 
@@ -44,7 +44,7 @@ def check_environment():
         if torch.cuda.is_available():
             print(f"CUDA device: {torch.cuda.get_device_name()}")
     except ImportError:
-        print("❌ PyTorch not installed!")
+        print("PyTorch not installed!")
         return False
     
     # Other dependencies
@@ -59,9 +59,9 @@ def check_environment():
                 from PIL import Image
             else:
                 __import__(dep)
-            print(f"✅ {dep}: OK")
+            print(f"{dep}: OK")
         except ImportError:
-            print(f"❌ {dep}: Missing")
+            print(f"{dep}: Missing")
             missing.append(dep)
     
     if missing:
@@ -69,7 +69,7 @@ def check_environment():
         print("Please install them with: pip install " + " ".join(missing))
         return False
     
-    print("✅ Environment check passed!")
+    print("Environment check passed!")
     return True
 
 
@@ -119,11 +119,11 @@ def demo_foveal_sampling():
         x, y = locations[0]
         print(f"Extracting glimpse at ({x}, {y})")
         high_res_patch, low_res_bg = foveal_transform.crop_lowhigh(image_np, x, y)
-        print(f"✅ Single glimpse extraction successful!")
+        print(f"Single glimpse extraction successful!")
         print(f"High-res patch shape: {high_res_patch.shape}")
         print(f"Low-res background shape: {low_res_bg.shape}")
     except Exception as e:
-        print(f"❌ Single glimpse extraction failed: {e}")
+        print(f"Single glimpse extraction failed: {e}")
         print("This indicates an issue with the foveal transform. Skipping visualization...")
         return
     
@@ -134,7 +134,7 @@ def demo_foveal_sampling():
         high_res_patch, low_res_bg = foveal_transform.crop_lowhigh(image_np, x, y)
         glimpses.append(high_res_patch)
     
-    print(f"✅ All glimpses extracted successfully!")
+    print(f"All glimpses extracted successfully!")
     
     # Visualize
     try:
@@ -178,17 +178,17 @@ def demo_foveal_sampling():
         plt.savefig(save_path, dpi=150, bbox_inches='tight', facecolor='white')
         plt.close()  # Close to free memory
         
-        print("✅ Foveal sampling demo completed!")
+        print("Foveal sampling demo completed!")
         print(f"Demo visualization saved as '{save_path}'")
         
         # Verify file was created
         if os.path.exists(save_path):
-            print(f"📁 File size: {os.path.getsize(save_path)} bytes")
+            print(f"File size: {os.path.getsize(save_path)} bytes")
         else:
-            print("⚠️  Warning: Visualization file was not created")
+            print("Warning: Visualization file was not created")
         
     except Exception as e:
-        print(f"❌ Visualization failed: {e}")
+        print(f"Visualization failed: {e}")
         print("The core functionality works, but visualization has issues.")
         print("You can run 'python experiments/quick_test.py' for a simple functionality test.")
 
@@ -235,7 +235,7 @@ def demo_model_creation():
     print(f"Attention weights shape: {weights.shape}")
     print(f"Attention weights example: {weights[0].numpy()}")
     
-    print("✅ Model creation demo completed!")
+    print("Model creation demo completed!")
 
 
 def demo_data_loading():
@@ -265,10 +265,10 @@ def demo_data_loading():
         print(f"Labels shape: {labels.shape}")
         print(f"Labels: {labels.numpy()}")
         
-        print("✅ Data loading demo completed!")
+        print("Data loading demo completed!")
         
     except Exception as e:
-        print(f"❌ Data loading failed: {e}")
+        print(f"Data loading failed: {e}")
         print("This might be due to network issues or disk space. You can skip this for now.")
 
 
@@ -296,7 +296,7 @@ def demo_metrics():
     for key, value in summary.items():
         print(f"  {key}: {value:.4f}")
     
-    print("✅ Metrics demo completed!")
+    print("Metrics demo completed!")
 
 
 def quick_training_demo():
@@ -357,10 +357,10 @@ def quick_training_demo():
         print(f"Demo training completed!")
         print(f"Average loss: {total_loss/5:.4f}")
         print(f"Accuracy: {100.*correct/total:.1f}%")
-        print("✅ Quick training demo completed!")
+        print("Quick training demo completed!")
         
     except Exception as e:
-        print(f"❌ Training demo failed: {e}")
+        print(f"Training demo failed: {e}")
         print("This might be due to memory constraints. The core functionality still works.")
 
 
@@ -374,19 +374,19 @@ def main():
     
     args = parser.parse_args()
     
-    print("🚀 Foveal Vision Project - Phase 1 Setup and Demo")
+    print("Foveal Vision Project - Phase 1 Setup and Demo")
     if args.debug:
-        print("🐛 DEBUG MODE ENABLED")
+        print("DEBUG MODE ENABLED")
     print("=" * 50)
     
     # Check environment
     if not check_environment():
-        print("\n❌ Environment check failed. Please fix the issues above.")
+        print("\n Environment check failed. Please fix the issues above.")
         return
     
     # Enable debug mode if requested
     if args.debug:
-        print("\n🐛 Debug info:")
+        print("\n Debug info:")
         print(f"OpenCV version: {cv2.__version__}")
         print(f"NumPy version: {np.__version__}")
         print(f"Working directory: {os.getcwd()}")
@@ -409,13 +409,7 @@ def main():
         demo_model_creation()
         demo_metrics()
     
-    print("\n" + "=" * 50)
-    print("🎉 Phase 1 setup and demo completed successfully!")
-    print("\nNext steps:")
-    print("1. Run full training: python train_baseline.py --epochs 30")
-    print("2. Experiment with different glimpse counts: python train_baseline.py --n_glimpses 5")
-    print("3. Compare with full resolution: python train_baseline.py --compare_full")
-    print("\nFor Phase 2 (uncertainty-driven attention), refer to the project documentation.")
+    print("\n Phase 1 setup and demo completed successfully!")
 
 
 if __name__ == "__main__":

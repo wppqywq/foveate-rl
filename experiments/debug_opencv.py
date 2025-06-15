@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""
-OpenCV Debug Script
-Tests OpenCV functionality to diagnose resize issues.
-"""
+
 
 import numpy as np
 import cv2

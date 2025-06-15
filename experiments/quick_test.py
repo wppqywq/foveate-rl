@@ -17,9 +17,9 @@ try:
     from fovea_lib.dataset_builder import create_baseline_dataloaders
     from fovea_lib.baseline_model import create_baseline_model
     from fovea_lib.metrics import EfficiencyMetrics
-    print("✅ All imports successful!")
+    print("All imports successful!")
 except ImportError as e:
-    print(f"❌ Import failed: {e}")
+    print(f"Import failed: {e}")
     sys.exit(1)
 
 def test_foveal_transform():
@@ -39,7 +39,7 @@ def test_foveal_transform():
         high_res, low_res = transform.crop_lowhigh(test_img, x, y)
         print(f"Glimpse {i+1} at ({x},{y}): high_res={high_res.shape}, low_res={low_res.shape}")
     
-    print("✅ Foveal transform working!")
+    print("Foveal transform working!")
 
 def test_model():
     """Test model creation and forward pass."""
@@ -61,7 +61,7 @@ def test_model():
     
     print(f"Input shape: {dummy_input.shape}")
     print(f"Output shape: {output.shape}")
-    print("✅ Model working!")
+    print("Model working!")
 
 def test_dataset():
     """Test dataset creation."""
@@ -83,10 +83,10 @@ def test_dataset():
         print(f"Glimpses shape: {glimpses.shape}")
         print(f"Full images shape: {full_images.shape}")
         print(f"Labels shape: {labels.shape}")
-        print("✅ Dataset working!")
+        print("Dataset working!")
         
     except Exception as e:
-        print(f"❌ Dataset test failed: {e}")
+        print(f"Dataset test failed: {e}")
 
 def test_metrics():
     """Test metrics calculation."""
@@ -108,20 +108,18 @@ def test_metrics():
     for key, value in summary.items():
         print(f"  {key}: {value:.4f}")
     
-    print("✅ Metrics working!")
+    print("Metrics working!")
 
 def main():
     """Run all tests."""
-    print("🧪 Quick Functionality Test")
-    print("=" * 40)
+    print("\n===Quick Functionality Test===")
     
     test_foveal_transform()
     test_model()
     test_dataset()
     test_metrics()
     
-    print("\n" + "=" * 40)
-    print("🎉 All core functionality tests passed!")
+    print("All core functionality tests passed!")
     print("\nReady to run full training:")
     print("  python train_baseline.py --epochs 30")
 
