@@ -6,6 +6,8 @@
 
 ## Project Overview
 
+This architecture follows [Mnih et al.(2014)](https://github.com/kevinzakka/recurrent-visual-attention) recurrent attention model but uses fixed locations for baseline establishment.
+
 Implementing human-like visual attention with high-resolution central vision and low-resolution peripheral processing.
 
 ### Installation
@@ -42,6 +44,8 @@ python experiments/train_baseline.py --epochs 30 --auto_resume
 ```
 
 ## Project Structure
+
+
 
 ```
 foveate-vision/
