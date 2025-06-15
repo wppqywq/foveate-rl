@@ -13,13 +13,10 @@ Implementing human-like visual attention with high-resolution central vision and
 ```bash
 # Clone the repository
 git clone https://github.com/wppqywq/foveate-vision
-cd foveate-vision
 
-# Create conda environment
+# Create environment
 conda create -n foveal-vision python=3.9 -y
 conda activate foveal-vision
-
-# Install dependencies
 pip install torch torchvision opencv-python matplotlib tqdm tensorboard pillow
 ```
 
@@ -29,11 +26,11 @@ pip install torch torchvision opencv-python matplotlib tqdm tensorboard pillow
 # Run setup and demonstration
 python setup_phase1.py
 
-# Train baseline model (3 glimpses, 30 epochs)
-python experiments/train_baseline.py --epochs 30 --n_glimpses 3
+# Train baseline model (3 glimpses, 15 epochs)
+python experiments/train_baseline.py --epochs 15 --n_glimpses 3
 
 # Compare with full resolution baseline
-python experiments/train_baseline.py --epochs 30 --n_glimpses 3 --compare_full
+# python experiments/train_baseline.py --epochs 30 --n_glimpses 3 --compare_full
 ```
 ### Resume Training Commands
 ```bash
@@ -57,7 +54,7 @@ foveate-vision/
 ├── experiments/              # Experimental scripts
 │   ├── train_baseline.py     # Training pipeline
 │   ├── setup_phase1.py       # Setup and demo
-│   └── debug_opencv.py       # Debugging utilities
+│   └── debug_opencv.py       # Temp debugging utilities
 ├── logs/                     # Training logs and checkpoints
 ├── data/                     # Dataset storage
 ├── results/                  # Experimental results
@@ -71,13 +68,13 @@ foveate-vision/
 ```python
 # Multi-resolution sampling strategy
 Input Image (32×32×3)
-    ↓ FovealTransform
-Multiple Glimpses (N×16×16×3)    # High-res foveal regions  
-    ↓ SharedResNetEncoder
+    | FovealTransform
+Multiple Glimpses (N×16×16×3)  # High-res foveal regions  
+    | SharedResNetEncoder
 Feature Vectors (N×512)
-    ↓ Attention/Concatenation
+    | Attention/Concatenation
 Combined Features
-    ↓ Classification
+    | Classification
 Predictions (10 classes)
 ```
 
