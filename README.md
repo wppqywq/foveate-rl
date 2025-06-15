@@ -81,17 +81,11 @@ Combined Features
 Predictions (10 classes)
 ```
 
-### Key Design Principles
 
-1. **Shared-weight processing**: All glimpses processed by same encoder (translation invariance)
-2. **Fixed attention baseline**: Establishes performance benchmarks before dynamic attention
-3. **Efficiency-first evaluation**: Novel metrics balancing accuracy and computational cost
 
 ### Efficiency Metrics
 
-- **Information Efficiency (IE)**: `accuracy / n_glimpses` - measures information gain per fixation
-- **Bandwidth Efficiency (BW)**: `pixels_processed / n_glimpses` - computational efficiency metric  
-- **Temporal Efficiency (TE)**: `accuracy / processing_time` - real-time performance indicator
+todo
 
 
 ## References
