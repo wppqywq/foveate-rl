@@ -3,14 +3,7 @@
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange.svg)](https://pytorch.org/)
 
-Implementation of **"Emergence of foveal image sampling from learning to attend in visual scenes"** (Cheung et al. 2016). Demonstrates how foveal attention patterns emerge naturally from reinforcement learning without explicit foveal bias.
-
-## Key Features
-
-- **RL-based attention learning** using REINFORCE algorithm
-- **True foveal sampling** with eccentricity-dependent resolution
-- **Emergence analysis** tracking development of foveal patterns
-- **Clean, modular codebase** for research and extension
+Draft implementation of **"Emergence of foveal image sampling from learning to attend in visual scenes"** (Cheung et al. 2016). Demonstrates how foveal attention patterns emerge naturally from reinforcement learning without explicit foveal bias.
 
 ## Quick Start
 
@@ -19,13 +12,13 @@ Implementation of **"Emergence of foveal image sampling from learning to attend 
 pip install torch torchvision matplotlib scipy tqdm
 
 # Clone repository
-git clone https://github.com/your-username/foveal-attention
+git clone https://github.com/wppqywq/foveal-vision
 cd foveal-attention
 
-# Run demo (5 minutes)
+# Run demo
 python demo_rl_attention.py
 
-# Train full model (2-4 hours)
+# Train full model
 python train_rl_attention.py --epochs 50 --dataset cifar10
 ```
 
@@ -53,20 +46,6 @@ The model learns attention policies through REINFORCE:
 3. **Recurrent Core**: Maintains attention state across glimpses
 4. **Classifier**: Final prediction based on attended regions
 
-## Training Requirements
-
-| Resource | Minimum | Recommended |
-|----------|---------|-------------|
-| GPU | GTX 1080 (8GB) | RTX 3080+ |
-| RAM | 16GB | 32GB+ |
-| CPU | 8 cores | 16+ cores |
-| Training Time | 2-4 hours | 1-2 hours |
-
-## Expected Results
-
-- **CIFAR-10 Accuracy**: 85-90%
-- **Foveal Emergence**: Attention becomes increasingly centered
-- **Pattern Analysis**: Random → clustered → foveal over training
 
 ## Usage Examples
 
