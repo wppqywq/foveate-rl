@@ -3,6 +3,8 @@
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange.svg)](https://pytorch.org/)
 
+TODO: haven't complete RL algorithm. Only structures to demo
+
 Draft implementation of **"Emergence of foveal image sampling from learning to attend in visual scenes"** (Cheung et al. 2016). Demonstrates how foveal attention patterns emerge naturally from reinforcement learning without explicit foveal bias.
 
 ## Quick Start
@@ -47,35 +49,8 @@ The model learns attention policies through REINFORCE:
 4. **Classifier**: Final prediction based on attended regions
 
 
-## Usage Examples
+## Reference
 
-### Basic Training
-```bash
-python train_rl_attention.py --dataset cifar10 --epochs 50
-```
-
-### Custom Configuration
-```bash
-python train_rl_attention.py \
-    --dataset mnist \
-    --epochs 100 \
-    --batch_size 64 \
-    --max_glimpses 8 \
-    --lr 0.001
-```
-
-### Analysis
-```python
-from fovea_lib import EmergenceAnalyzer, TrainingMonitor
-
-# Analyze attention patterns
-analyzer = EmergenceAnalyzer()
-foveal_score = analyzer.compute_foveal_score(attention_patterns)
-print(f"Foveal score: {foveal_score:.3f}")
-```
-
-## Key Papers
-
-- Cheung et al. (2016): "Emergence of foveal image sampling from learning to attend in visual scenes"
-- Mnih et al. (2014): "Recurrent Models of Visual Attention"
+- Cheung et al. (2016): "Emergence of foveal image sampling from learning to attend in visual scenes" (**Theory**)
+- Mnih et al. (2014): "Recurrent Models of Visual Attention" (**Architecture**)
 
